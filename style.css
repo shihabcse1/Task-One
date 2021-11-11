@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  margin: 10px 50px;
+}
+.form-group {
+  margin: 10px;
+}
+input {
+  border: solid 1px #eee;
+  width: 100%;
+  padding: 15px 10px;
+}
+button {
+  width: 200px;
+  padding: 15px;
+  margin-left: 250px;
+  background: #fff;
+  color: dodgerbluef;
+  border: solid 1px dodgerblue;
+  border-radius: 333px;
+  cursor: pointer;
+  transition: all 0.38s case-in-out;
+}
+
+button:hover {
+  background: dodgerblue;
+  color: #fff;
+}
+
+html {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  background: #fff;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+  margin: 20px 5px;
+}
+
+table tr td {
+  border: solid 1px #eee;
+  padding: 10px;
+}
