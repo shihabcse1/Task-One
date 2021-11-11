@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Information</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Add Student Information</h2>
+    <form role="form" onsubmit="addInformation(event);" autocomplete="off">
+      <div class="form-group">
+        <input type="text" name="name" id="name" placeholder="Enter Name" required />
+      </div>
+      <div class="form-group">
+        <input type="number" name="studentID" id="studentID" placeholder="Enter Student ID" required />
+      </div>
+      <div class="form-group">
+        <input type="text" name="department" id="department" placeholder="Enter Department" required />
+      </div>
+      <div class="form-group">
+        <input type="text" name="section" id="section" placeholder="Enter Section" required />
+      </div>
+      <div class="form-group">
+        <button type="submit">Add</button>
+        <button type="submit">Edit</button>
+      </div>
+    </form>
+
+    <h2>Student's Information</h2>
+    <div id="output">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Student ID</th>
+            <th>Department</th>
+            <th>Section</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script type="text/javascript">
+      const addInformation = (e) => {
+        let formData = [];
+        formData = JSON.parse(localStorage.getItem("formData"));
+        formData.push({
+          name: document.getElementById("name").value,
+          studentID: document.getElementById("studentID").value,
+          department: document.getElementById("department").value,
+          section: document.getElementById("section").value,
+        });
+        localStorage.setItem("formData", JSON.stringify(formData));
+        console.log(localStorage.getItem("formData"));
+        displayData();
+        document.querySelector("form").reset();
+        document.getElementById("name").focus();
+        e.preventDefault();
+      };
+
+      function displayData() {
+        console.log(JSON.parse(localStorage.getItem("formData")));
+        if (localStorage.getItem("formData")) {
+          var output = document.querySelector("tbody");
+          output.innerHTML = "";
+          JSON.parse(localStorage.getItem("formData")).forEach((data) => {
+            output.innerHTML += `
+                <tr>
+                    <td>${data.name}</td>
+                    <td>${data.studentID}</td>
+                    <td>${data.department}</td>
+                    <td>${data.section}</td>
+                </tr>
+            `;
+          });
+        }
+      }
+      displayData();
+    </script>
+  </body>
+</html>
